@@ -9,22 +9,22 @@ namespace P44a1_ProyectoPilotarAvion
 {
     internal static class Util
     {
-        public static int CapturaEntero(string mensaje, int min, int max) 
+        public static int CapturaEntero(string mensaje, int min) 
         {
             int valor = 0;
             bool numCorrecto;
 
             do
             {
-                Console.Write("\n\t{0} [{1}..{2}]: ", mensaje, min, max);
+                Console.Write("\n\t{0}", mensaje);
                 numCorrecto = Int32.TryParse(Console.ReadLine(), out valor);
 
                 if (!numCorrecto)
                     Console.WriteLine("\n\t** [ERROR] No ha introducido un número entero. **");
-                else if (valor < min || valor > max)
+                else if (valor < min)
                 {
                     numCorrecto = false;
-                    Console.WriteLine("\n\t** [ERROR] El número introducido no se encuentra entre {0} y {1}. **", min, max);
+                    Console.WriteLine("\n\t** [ERROR] El número introducido es negativo. **", min);
                 }
 
 
@@ -34,7 +34,7 @@ namespace P44a1_ProyectoPilotarAvion
         }
         public static int Menu() 
         {
-            Console.WriteLine("\t\t\t╔════════════════════════════╗");
+            Console.WriteLine("\n\t\t\t╔════════════════════════════╗");
             Console.WriteLine("\t\t\t║ Opciones del Piloto        ║");
             Console.WriteLine("\t\t\t╠════════════════════════════╣");
             Console.WriteLine("\t\t\t║ 1) Aumentar Velocidad      ║");
@@ -48,7 +48,7 @@ namespace P44a1_ProyectoPilotarAvion
             Console.WriteLine("\t\t\t║                            ║");
             Console.WriteLine("\t\t\t╚════════════════════════════╝");
 
-            return CapturaNumPulsado("\t\t\tPulse su opción", 0, 8);
+            return CapturaNumPulsado("\t\t\tPulse su opción", 0, 6);
         }
         public static int CapturaNumPulsado(string mensaje, int min, int max)
         {
@@ -72,8 +72,13 @@ namespace P44a1_ProyectoPilotarAvion
         public static void MostrarError(string mensaje) 
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("*** Error: {0} ***",mensaje);
+            Console.WriteLine("{0}",mensaje);
             Console.ResetColor();
+        }
+        public static void Pausa()
+        {
+            Console.WriteLine("\n\tPulse una tecla para continuar...");
+            Console.ReadKey(true);
         }
     }
 }
