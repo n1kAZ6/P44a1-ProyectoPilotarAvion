@@ -18,7 +18,7 @@ namespace P44a1_ProyectoPilotarAvion
             {
                 Console.Clear();
                 Console.WriteLine("\n\n\t\tAvión: {0}-{1}. Matrícula: {2}. Altitud máxima: {3}",miJetPrivado.Marca,miJetPrivado.Modelo,miJetPrivado.Matricula,Avion.ALTITUDMAXIMA1);
-                Console.WriteLine("\n\t\tSituación actual --> Altitud: {0} m   Velocidad: {1} Km/h.",miJetPrivado.Altitud,miJetPrivado.Velocidad);
+                Console.WriteLine("\n\t\tSituación actual -->\tAvión en vuelo: {0}\tAltitud: {1} m \tVelocidad: {2} Km/h.",miJetPrivado.HaDespegado ? "Si" : "No",miJetPrivado.Altitud,miJetPrivado.Velocidad);
                 opcion = Util.Menu();
                 switch (opcion) 
                 {
